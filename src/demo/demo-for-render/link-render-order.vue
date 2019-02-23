@@ -9,6 +9,10 @@
                 </slot>
             </div>
         </div>
+        <div class="link-render-order-option-button">
+            <link-icon icon="pl-arrow-circle-left"/>
+            <link-icon icon="pl-arrow-circle-right"/>
+        </div>
         <div class="link-render-order-right">
             <div class="link-product-item"
                  v-for="(item,index) in rightData"
@@ -43,7 +47,7 @@
 
 <style lang="scss">
     .link-render-order {
-        width: 200px;
+        width: 400px;
         display: inline-flex;
         height: 300px;
         align-items: center;
@@ -52,16 +56,32 @@
             width: 50%;
             display: inline-block;
             height: 100%;
+            border: solid #ddd 1px;
         }
 
         .link-render-order-left {
-            background-color: blueviolet;
-            color: white;
+            border: solid #ddd 1px;
         }
 
         .link-render-order-right {
-            background-color: cornflowerblue;
-            color: white;
+        }
+
+        .link-render-order-option-button {
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            & > *:not(:last-child) {
+                margin-bottom: 12px;
+            }
+        }
+
+        .link-product-item, .link-order-item {
+            padding: 6px 12px;
+            box-sizing: border-box;
+            font-size: 14px;
         }
     }
 </style>
