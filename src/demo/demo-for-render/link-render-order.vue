@@ -3,7 +3,8 @@
         <div class="link-render-order-left">
             <div class="link-order-item"
                  v-for="(item,index) in leftData"
-                 :key="index">
+                 :key="index"
+                 @click="$emit('order',item)">
                 <slot :row="item" :rowIndex="index" name="left">
                     {{item.name}}
                 </slot>
@@ -16,7 +17,8 @@
         <div class="link-render-order-right">
             <div class="link-product-item"
                  v-for="(item,index) in rightData"
-                 :key="index">
+                 :key="index"
+                 @click="$emit('product',item)">
                 <slot :row="item" :rowIndex="index" name="right">
                     {{item.name}}
                 </slot>
