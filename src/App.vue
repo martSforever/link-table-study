@@ -85,6 +85,10 @@
                     align-items: center;
                     justify-content: space-between;
                     font-family: "PingFang HK";
+                    cursor: pointer;
+                    &:hover {
+                        background-color: #f2f2f2;
+                    }
                 }
             }
 
