@@ -44,6 +44,10 @@
                         name: '渲染函数以及作用域插槽demo',
                         path: '/demo-list'
                     },
+                    {
+                        name: '讲解async|await示例页面',
+                        path: '/demo-async-await/demo-async-await'
+                    },
                 ]
             }
         },
@@ -86,6 +90,7 @@
                     justify-content: space-between;
                     font-family: "PingFang HK";
                     cursor: pointer;
+
                     &:hover {
                         background-color: #f2f2f2;
                     }
