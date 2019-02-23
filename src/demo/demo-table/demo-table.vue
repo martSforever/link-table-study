@@ -7,6 +7,7 @@
             <link-base-column title="编号" field="id"/>
             <link-base-column title="姓名" field="name"/>
             <link-base-column title="工号" field="code"/>
+            <link-base-column title="性别" field="code"/>
         </link-basic-table>
     </div>
 </template>

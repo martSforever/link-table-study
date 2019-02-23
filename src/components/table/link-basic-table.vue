@@ -1,18 +1,16 @@
 <template>
     <div class="link-basic-table">
-        <link-column-controller>
+        <link-column-controller @collect="p_collect">
             <slot></slot>
         </link-column-controller>
         <table>
             <thead>
             <th>
-                <tr>编号</tr>
-            </th>
-            <th>
-                <tr>姓名</tr>
-            </th>
-            <th>
-                <tr>工号</tr>
+                <tr>
+                    <td v-for="(col,colIndex) in columns" :key="colIndex">
+                        {{col.title}}
+                    </td>
+                </tr>
             </th>
             </thead>
         </table>
@@ -27,6 +25,16 @@
         components: {LinkColumnController},
         props: {
             data: {type: Array, default: () => []},
+        },
+        data() {
+            return {
+                columns: [],
+            }
+        },
+        methods: {
+            p_collect(columns) {
+                this.columns = columns
+            },
         },
     }
 </script>

@@ -8,8 +8,13 @@
     export default {
         name: "link-column-controller",
         mounted() {
-            console.log(this.$children)
-        }
+            this.collect()
+        },
+        methods: {
+            collect() {
+                this.$emit('collect', this.$children.map(({title, field, width}) => ({title, field, width})))
+            },
+        },
     }
 </script>
 
