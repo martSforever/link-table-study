@@ -1,9 +1,6 @@
 <template>
     <div class="demo-list">
-        <link-list :external-data="externalData">
-            <template slot-scope="data">
-                {{data.row.name}}-icon
-            </template>
+        <link-list>
         </link-list>
     </div>
 </template>
@@ -28,6 +25,15 @@
                 ],
             }
         },
+        methods: {
+            renderFunc(h, row) {
+                return (
+                    <div>
+                        [{row.name}]
+                    </div>
+                )
+            },
+        }
     }
 </script>
 
