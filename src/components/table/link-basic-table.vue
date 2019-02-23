@@ -5,14 +5,23 @@
         </link-column-controller>
         <table>
             <thead>
-            <th>
-                <tr>
-                    <td v-for="(col,colIndex) in columns" :key="colIndex">
+            <tr>
+                <td v-for="(col,colIndex) in columns" :key="colIndex">
+                    <div :style="{width:`${$plain.$utils.unit(col.width)}`}">
                         {{col.title}}
-                    </td>
-                </tr>
-            </th>
+                    </div>
+                </td>
+            </tr>
             </thead>
+            <tbody>
+            <tr v-for="(row,rowIndex) in data" :key="rowIndex">
+                <td v-for="(col,colIndex) in columns" :key="colIndex">
+                    <div :style="{width:`${$plain.$utils.unit(col.width)}`}">
+                        {{row[col.field]}}
+                    </div>
+                </td>
+            </tr>
+            </tbody>
         </table>
     </div>
 </template>

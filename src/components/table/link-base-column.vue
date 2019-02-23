@@ -10,7 +10,7 @@
         props: {
             title: {type: String,},
             field: {type: String,},
-            width: {type: Number,},
+            width: {type: Number, default: 100},
         },
     }
 </script>
