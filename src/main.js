@@ -8,7 +8,7 @@ Vue.use(PlainUI, {
     prefix: 'link',
     pageRegistry(path) {
         return new Promise((rs, rj) => {
-            import('src/pages' + path + '.vue')
+            import('src/demo' + path + '.vue')
                 .then(module => rs(module.default))
                 .catch(e => rj(e))
         })

@@ -1,6 +1,9 @@
 <template>
     <div class="demo-list">
         <link-list>
+            <template slot-scope="row">
+                [[[{{row.name}}]]]
+            </template>
         </link-list>
     </div>
 </template>
