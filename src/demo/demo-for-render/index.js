@@ -18,10 +18,14 @@ export default {
         return instance
     },
 
-    pick() {
+    pick({leftRender, rightRender, externalLeftData} = {}) {
         return new Promise((rs, rj) => {
             this.instance.show = true
             this.instance.onConfirm = rs
+
+            this.instance.leftRender = leftRender
+            this.instance.rightRender = rightRender
+            this.instance.externalLeftData = externalLeftData
         })
     },
 }

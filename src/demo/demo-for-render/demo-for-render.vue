@@ -38,7 +38,27 @@
                 this.$refs.dialog.show = true
             },
             async pick() {
-                const {order, product} = (await OrderService.pick())
+                const {order, product} = (await OrderService.pick({
+                    leftRender(h, row) {
+                        return (
+                            <div>
+                                hello,order-->>{row.name}
+                            </div>
+                        )
+                    },
+                    rightRender(h, row) {
+                        return (
+                            <div>
+                                hello,product-->>{row.name}
+                            </div>
+                        )
+                    },
+                    externalLeftData: [
+                        {name: '订单四', code: 'four'},
+                        {name: '订单五', code: 'five'},
+                        {name: '订单六', code: 'six'},
+                    ]
+                }))
                 this.$message.show(`订单：${order.name},产品：${product.name}`)
             },
         }

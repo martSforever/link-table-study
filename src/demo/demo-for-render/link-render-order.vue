@@ -2,7 +2,7 @@
     <div class="link-render-order">
         <div class="link-render-order-left">
             <div class="link-order-item"
-                 v-for="(item,index) in leftData"
+                 v-for="(item,index) in  (externalLeftData || leftData)"
                  :key="index"
                  @click="$emit('order',item)">
                 <slot :row="item" :rowIndex="index" name="left">
@@ -30,6 +30,9 @@
 <script>
     export default {
         name: "link-render-order",
+        props: {
+            externalLeftData: {type: Array},
+        },
         data() {
             return {
                 leftData: [

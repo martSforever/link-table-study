@@ -8,16 +8,25 @@
             order:{{order.name}},product:{{product.name}}
         </div>
         <link-render-order @order="p_order"
-                           @product="p_product"/>
+                           @product="p_product"
+                           :externalLeftData="externalLeftData">
+            <template slot-scope="{row}" v-if="!!leftRender" slot="left">
+                <lv-render-func :render-func="leftRender" :data="row"/>
+            </template>
+            <template slot-scope="{row}" v-if="!!rightRender" slot="right">
+                <lv-render-func :render-func="rightRender" :data="row"/>
+            </template>
+        </link-render-order>
     </link-dialog>
 </template>
 
 <script>
     import LinkRenderOrder from "./link-render-order";
+    import LvRenderFunc from "../../components/render/lv-render-func";
 
     export default {
         name: "link-render-order-dialog",
-        components: {LinkRenderOrder},
+        components: {LvRenderFunc, LinkRenderOrder},
         data() {
             return {
                 show: false,
@@ -25,6 +34,10 @@
                 onCancel: null,
                 order: {},
                 product: {},
+
+                leftRender: null,
+                rightRender: null,
+                externalLeftData: null,
             }
         },
         methods: {
