@@ -6,6 +6,8 @@
                 <link-button @click="testAjaxNotLink" label="testAjaxNotLink"/>
                 <link-button @click="testAxios" label="testAxios"/>
                 <link-button @click="testAxiosNotLink" label="testAxiosNotLink"/>
+                <link-button @click="testAwait" label="testAwait"/>
+                <link-button @click="testAwaitNotLink" label="testAwaitNotLink"/>
             </link-button-group>
 
         </div>
@@ -82,7 +84,7 @@
                 this.axios.post('link/dakjdsha', null)
                     .then(() => {
                         this.$message.show('testAxios success')
-                        return this.axios.post('dasd',{})
+                        return this.axios.post('dasd', {})
                     })
                     .catch(() => {
                         this.$message.show('testAxios error')
@@ -99,6 +101,31 @@
                     .catch(() => {
                         this.$message.show('testAxiosNotLink error')
                     })
+            },
+
+            async testAwait() {
+                const ret = await this.axios.post('link/dakjdsha', null)
+                this.$message.show('testAwait success')
+                let ret2 = await this.axios.post('link/dakjdsha', ret)
+                ret2 = null
+                let ret3 = await this.axios.post('link/dakjdsha', null)
+
+                this.axios.post('link/dakjdsha', null).then(() => {
+                })
+                this.axios.post('link/dakjdsha', null).then(() => {
+                })
+                this.axios.post('link/dakjdsha', null).then(() => {
+                })
+            },
+            async testAwaitNotLink() {
+                const ret = await this.axios.post('daksjdsalj/dakjdsha', null)
+                this.$message.show('testAwaitNotLink success')
+            },
+
+            test() {
+                setTimeout(async () => {
+                    let ret2 = await this.axios.post('link/dakjdsha', ret)
+                })
             },
         }
     }
