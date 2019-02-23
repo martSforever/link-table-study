@@ -22,7 +22,6 @@
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
     import DemoList from "./demo/demo-list";
     import DemoForRender from "./demo/demo-for-render/demo-for-render";
 
@@ -31,7 +30,6 @@
         components: {
             DemoForRender,
             DemoList,
-            HelloWorld
         },
         data() {
             return {
