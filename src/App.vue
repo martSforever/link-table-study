@@ -48,6 +48,10 @@
                         name: '讲解async|await示例页面',
                         path: '/demo-async-await/demo-async-await'
                     },
+                    {
+                        name: 'BaseTable基础实现',
+                        path: '/demo-table/demo-table'
+                    },
                 ]
             }
         },
