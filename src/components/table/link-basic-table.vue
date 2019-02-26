@@ -53,5 +53,6 @@
         width: 100%;
         height: 300px;
         background-color: #f2f2f2;
+        overflow-x: auto;
     }
 </style>

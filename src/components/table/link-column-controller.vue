@@ -12,7 +12,14 @@
         },
         methods: {
             collect() {
-                this.$emit('collect', this.$children.map(({title, field, width}) => ({title, field, width})))
+                const prop = ['title', 'field', 'width', 'fixed']
+                const columns = this.$children.map((item => {
+                    return prop.reduce((ret, key) => {
+                        ret[key] = item[key]
+                        return ret
+                    }, {})
+                }))
+                this.$emit('collect', columns)
             },
         },
     }

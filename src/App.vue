@@ -102,6 +102,7 @@
             .app-right {
                 flex: 1;
                 height: 100%;
+                overflow-y: hidden;
             }
         }
     }
