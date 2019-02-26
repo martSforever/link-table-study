@@ -3,9 +3,9 @@
         <link-column-controller @collect="p_collect">
             <slot></slot>
         </link-column-controller>
-        <div>
+        <!--<div>
             hover:{{hover}}
-        </div>
+        </div>-->
         <link-table-head ref="head"
                          :columns="columns"
                          @mouseenter.native="hover = 'head'"

@@ -12,6 +12,19 @@
             field: {type: String,},
             width: {type: Number, default: 100},
         },
+        computed: {
+            col() {
+                const that = this
+                /*@formatter:off*/
+                const ret = {
+                    get title(){return that.title},
+                    get field(){return that.field},
+                    get width(){return that.width},
+                }
+                /*@formatter:on*/
+                return ret
+            },
+        },
     }
 </script>
 

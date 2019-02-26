@@ -1,8 +1,14 @@
 <template>
     <div class="demo-table">
-        <link-basic-table :data="data">
+        <div>
+            <link-button-group>
+                <link-button label="打印columns信息" @click="logColumns"/>
+            </link-button-group>
+            <link-input :value="idWidth" @input="val=>idWidth = val-0"/>
+        </div>
+        <link-basic-table :data="data" ref="baseTable">
             <!--<link-table-column-group title="用户信息">-->
-            <link-base-column title="编号" field="id" :width="200"/>
+            <link-base-column title="编号" field="id" :width="idWidth"/>
             <link-base-column title="姓名" field="name"/>
             <link-base-column title="工号" field="code"/>
             <!--</link-table-column-group>-->
@@ -22,6 +28,7 @@
         components: {LinkTableColumnGroup, LinkBaseColumn, LinkBasicTable},
         data() {
             return {
+                idWidth: 200,
                 data: [
                     {id: 111, name: '张三', code: '0001', gender: 'man'},
                     {id: 222, name: '李四', code: '0002', gender: 'man'},
@@ -47,6 +54,11 @@
                 ]
             }
         },
+        methods: {
+            logColumns() {
+                console.log(this.$refs.baseTable.columns)
+            },
+        }
     }
 </script>
 
