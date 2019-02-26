@@ -12,7 +12,11 @@
         },
         methods: {
             collect() {
-                const columns = this.$children.map(item => item.col)
+                const columns = this.$children.map((item) => {
+                    if (!item.group) return item.col
+                    return item.getCols()
+                })
+                console.log(columns)
                 this.$emit('collect', columns)
             },
         },

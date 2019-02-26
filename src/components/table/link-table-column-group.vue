@@ -7,9 +7,26 @@
 <script>
     export default {
         name: "link-table-column-group",
-        props:{
+        props: {
             title: {type: String,},
         },
+        data() {
+            return {
+                group: true,
+            }
+        },
+        methods: {
+            getCols() {
+                const children = this.$children.map((item => {
+                    if (!item.group) return item.col
+                    return item.getCols()
+                }))
+                return {
+                    title: this.title,
+                    children,
+                }
+            },
+        }
     }
 </script>
 
