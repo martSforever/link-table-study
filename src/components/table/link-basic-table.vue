@@ -3,49 +3,38 @@
         <link-column-controller @collect="p_collect">
             <slot></slot>
         </link-column-controller>
-
-        <div class="link-table-head" ref="head" @scroll="handleHeadScroll">
-            <table>
-                <thead>
-                <tr>
-                    <td v-for="(col,colIndex) in columns" :key="colIndex">
-                        <div :style="{width:`${$plain.$utils.unit(col.width)}`}">
-                            {{col.title}}
-                        </div>
-                    </td>
-                </tr>
-                </thead>
-            </table>
+        <div>
+            hover:{{hover}}
         </div>
+        <link-table-head ref="head"
+                         :columns="columns"
+                         @mouseenter.native="hover = 'head'"
+                         @scroll="handleHeadScroll"/>
 
-        <div class="link-table-body" ref="body" @scroll="handleBodyScroll">
-            <table>
-                <tbody>
-                <tr v-for="(row,rowIndex) in data" :key="rowIndex">
-                    <td v-for="(col,colIndex) in columns" :key="colIndex">
-                        <div :style="{width:`${$plain.$utils.unit(col.width)}`}">
-                            {{row[col.field]}}
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <link-table-body ref="body"
+                         :data="data"
+
+                         :columns="columns"
+                         @mouseenter.native="hover = 'body'"
+                         @scroll="handleBodyScroll"/>
     </div>
 </template>
 
 <script>
     import LinkColumnController from "./link-column-controller";
+    import LinkTableHead from "./link-table-head";
+    import LinkTableBody from "./link-table-body";
 
     export default {
         name: "link-basic-table",
-        components: {LinkColumnController},
+        components: {LinkTableBody, LinkTableHead, LinkColumnController},
         props: {
             data: {type: Array, default: () => []},
         },
         data() {
             return {
                 columns: [],
+                hover: null,
             }
         },
         methods: {
@@ -53,10 +42,10 @@
                 this.columns = columns
             },
             handleBodyScroll(e) {
-                this.$refs.head.scrollLeft = e.target.scrollLeft
+                this.hover === 'body' && this.$refs.head.$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
             handleHeadScroll(e) {
-                this.$refs.body.scrollLeft = e.target.scrollLeft
+                this.hover === 'head' && this.$refs.body.$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
         },
     }
