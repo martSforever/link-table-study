@@ -7,13 +7,20 @@
             <link-input :value="idWidth" @input="val=>idWidth = val-0"/>
         </div>
         <link-basic-table :data="data" ref="baseTable">
-            <link-table-column-group title="用户信息">
-                <link-base-column title="编号" field="id" :width="idWidth"/>
-                <link-base-column title="姓名" field="name"/>
-                <link-base-column title="工号" field="code"/>
+            <link-table-column-group title="用户信息111">
+                <link-base-column title="编号111" field="id" :width="idWidth"/>
+                <link-base-column title="姓名111" field="name"/>
+                <link-base-column title="工号111" field="code"/>
+
+                <link-table-column-group title="用户信息222">
+                    <link-base-column title="编号222" field="id" :width="idWidth"/>
+                    <link-base-column title="姓名222" field="name"/>
+                    <link-base-column title="工号222" field="code"/>
+                </link-table-column-group>
+
             </link-table-column-group>
-            <link-base-column title="编号111" field="id" :width="200"/>
-            <link-base-column title="姓名222" field="name"/>
+            <link-base-column title="编号333" field="id" :width="200"/>
+            <link-base-column title="姓名333" field="name"/>
         </link-basic-table>
     </div>
 </template>

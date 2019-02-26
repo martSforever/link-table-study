@@ -11,12 +11,12 @@
                          @mouseenter.native="hover = 'head'"
                          @scroll="handleHeadScroll"/>
 
-        <link-table-body ref="body"
+       <!-- <link-table-body ref="body"
                          :data="data"
 
                          :columns="columns"
                          @mouseenter.native="hover = 'body'"
-                         @scroll="handleBodyScroll"/>
+                         @scroll="handleBodyScroll"/>-->
     </div>
 </template>
 
@@ -60,7 +60,6 @@
         flex-direction: column;
 
         .link-table-head {
-            height: 40px;
             color: black;
             background-color: #cacaca;
             width: 100%;
