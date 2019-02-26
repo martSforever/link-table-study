@@ -23,6 +23,7 @@
                 }))
                 return {
                     title: this.title,
+                    group:true,
                     children,
                 }
             },

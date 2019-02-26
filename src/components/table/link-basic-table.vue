@@ -8,15 +8,16 @@
         </div>-->
         <link-table-head ref="head"
                          :columns="columns"
+                         :head-columns="headColumns"
                          @mouseenter.native="hover = 'head'"
                          @scroll="handleHeadScroll"/>
 
-       <!-- <link-table-body ref="body"
-                         :data="data"
+        <!-- <link-table-body ref="body"
+                          :data="data"
 
-                         :columns="columns"
-                         @mouseenter.native="hover = 'body'"
-                         @scroll="handleBodyScroll"/>-->
+                          :columns="columns"
+                          @mouseenter.native="hover = 'body'"
+                          @scroll="handleBodyScroll"/>-->
     </div>
 </template>
 
@@ -35,17 +36,47 @@
             return {
                 columns: [],
                 hover: null,
+                isMounted: false,
             }
+        },
+        computed: {
+            headColumns() {
+                if (!this.isMounted) return []
+                /*计算最大层数*/
+                let maxLevel = 1;
+                console.log(this.columns)
+                const calculateMaxLevel = (columns, level) => {
+                    if (!!columns && columns.length > 0) {
+                        if (level > maxLevel) {
+                            maxLevel = level
+                        }
+                        for (let i = 0; i < columns.length; i++) {
+                            const column = columns[i];
+                            column.level = level - 1
+                            if (column.group) {
+                                calculateMaxLevel(column.children, level + 1)
+                            }
+                        }
+                    }
+                }
+                calculateMaxLevel(this.columns, 1)
+                console.log(maxLevel)
+
+                /*如果不是组，该表头所占的行数就是： 最大层数-他所在的层数+1*/
+            },
+        },
+        mounted() {
+            this.isMounted = true
         },
         methods: {
             p_collect(columns) {
                 this.columns = columns
             },
             handleBodyScroll(e) {
-                this.hover === 'body' && this.$refs.head.$refs.scroll.setScroll({x: e.target.scrollLeft})
+                // this.hover === 'body' && this.$refs.head.$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
             handleHeadScroll(e) {
-                this.hover === 'head' && this.$refs.body.$refs.scroll.setScroll({x: e.target.scrollLeft})
+                // this.hover === 'head' && this.$refs.body.$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
         },
     }

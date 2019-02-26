@@ -21,6 +21,12 @@
             </link-table-column-group>
             <link-base-column title="编号333" field="id" :width="200"/>
             <link-base-column title="姓名333" field="name"/>
+
+            <link-table-column-group title="用户信息444">
+                <link-base-column title="编号444" field="id" :width="idWidth"/>
+                <link-base-column title="姓名444" field="name"/>
+                <link-base-column title="工号444" field="code"/>
+            </link-table-column-group>
         </link-basic-table>
     </div>
 </template>

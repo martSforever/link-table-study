@@ -16,7 +16,6 @@
                     if (!item.group) return item.col
                     return item.getCols()
                 })
-                console.log(columns)
                 this.$emit('collect', columns)
             },
         },
