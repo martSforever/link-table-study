@@ -50,6 +50,10 @@
                         name: 'BaseTable基础实现',
                         path: '/demo-table/demo-table'
                     },
+                    {
+                        name: 'Scroll滚动条组件示例',
+                        path: '/demo-scroll/demo-scroll'
+                    },
                 ]
             }
         },
