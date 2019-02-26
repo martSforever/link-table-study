@@ -1,22 +1,13 @@
 <template>
     <div class="demo-table">
         <link-basic-table :data="data">
+            <!--<link-table-column-group title="用户信息">-->
             <link-base-column title="编号" field="id" :width="200"/>
             <link-base-column title="姓名" field="name"/>
             <link-base-column title="工号" field="code"/>
-            <link-base-column title="性别" field="gender"/>
-            <link-base-column title="编号" field="id" :width="200"/>
-            <link-base-column title="姓名" field="name"/>
-            <link-base-column title="工号" field="code"/>
-            <link-base-column title="性别" field="gender"/>
-            <link-base-column title="编号" field="id" :width="200"/>
-            <link-base-column title="姓名" field="name"/>
-            <link-base-column title="工号" field="code"/>
-            <link-base-column title="性别" field="gender"/>
-            <link-base-column title="编号" field="id" :width="200"/>
-            <link-base-column title="姓名" field="name"/>
-            <link-base-column title="工号" field="code"/>
-            <link-base-column title="性别" field="gender"/>
+            <!--</link-table-column-group>-->
+            <link-base-column title="编号111" field="id" :width="200"/>
+            <link-base-column title="姓名222" field="name"/>
         </link-basic-table>
     </div>
 </template>
@@ -24,10 +15,11 @@
 <script>
     import LinkBasicTable from "../../components/table/link-basic-table";
     import LinkBaseColumn from "../../components/table/link-base-column";
+    import LinkTableColumnGroup from "../../components/table/link-table-column-group";
 
     export default {
         name: "demo-table",
-        components: {LinkBaseColumn, LinkBasicTable},
+        components: {LinkTableColumnGroup, LinkBaseColumn, LinkBasicTable},
         data() {
             return {
                 data: [
