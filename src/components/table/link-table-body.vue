@@ -31,8 +31,6 @@
 
 <style lang="scss">
     .link-table-body {
-        tr:nth-child(odd) {
-            background-color: cornflowerblue;
-        }
+
     }
 </style>
