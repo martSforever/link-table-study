@@ -97,7 +97,7 @@
                 const cols = []
                 itar(this.columns, cols)
                 // console.log(cols.map(i => i.title))
-                console.log('bodyColumns', cols)
+                // console.log('bodyColumns', cols)
                 return cols
             },
         },

@@ -30,14 +30,10 @@
                     <td colspan="1" rowspan="1">工号222</td>
                 </tr>-->
                 <tr v-for="(colRow,colRowIndex) in headColumns" :key="colRowIndex">
-                    <td v-for="(colCol,colColIndex) in colRow"
-                        :key="colColIndex"
-                        :colspan="colCol.colspan"
-                        :rowspan="colCol.rowspan">
-                        <div :style="{width:`${$plain.$utils.unit(colCol.width)}`}">
-                            {{colCol.title}}
-                        </div>
-                    </td>
+                    <link-table-head-cell
+                            v-for="(colCol,colColIndex) in colRow"
+                            :key="colColIndex"
+                            :col="colCol"/>
                 </tr>
                 </thead>
             </table>
@@ -46,8 +42,11 @@
 </template>
 
 <script>
+    import LinkTableHeadCell from "./link-table-head-cell";
+
     export default {
         name: "link-table-head",
+        components: {LinkTableHeadCell},
         props: {
             headColumns: {},
         },
@@ -59,9 +58,14 @@
         background-color: #f5f6fa;
         width: 100%;
         overflow-x: hidden;
+
         td {
             height: 40px;
             box-sizing: border-box;
+
+            &:hover {
+                background-color: #E4E7EF;
+            }
         }
     }
 </style>
