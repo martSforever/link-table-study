@@ -44,7 +44,6 @@
                 if (!this.isMounted) return []
                 /*计算最大层数*/
                 let maxLevel = 1;
-                console.log(this.columns)
                 const calculateMaxLevel = (columns, level) => {
                     if (!!columns && columns.length > 0) {
                         if (level > maxLevel) {
@@ -60,9 +59,25 @@
                     }
                 }
                 calculateMaxLevel(this.columns, 1)
-                console.log(maxLevel)
-
                 /*如果不是组，该表头所占的行数就是： 最大层数-他所在的层数+1*/
+
+                const calculateSpan = (columns) => {
+                    columns.forEach(col => {
+                        if (col.group) {
+                            calculateSpan(col.children)
+                            col.rowspan = 1
+                            col.colspan = col.children.reduce((ret, item) => ret + item.colspan, 0)
+                        } else {
+                            col.rowspan = maxLevel - col.level
+                            col.colspan = 1
+                        }
+                    })
+                }
+
+                calculateSpan(this.columns)
+
+                console.log(this.columns)
+
             },
         },
         mounted() {
