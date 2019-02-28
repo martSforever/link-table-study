@@ -7,7 +7,7 @@
             <table>
                 <tbody>
                 <tr v-for="(row,rowIndex) in data" :key="rowIndex">
-                    <td v-for="(col,colIndex) in columns" :key="colIndex">
+                    <td v-for="(col,colIndex) in bodyColumns" :key="colIndex">
                         <div :style="{width:`${$plain.$utils.unit(col.width)}`}">
                             {{row[col.field]}}
                         </div>
@@ -24,7 +24,7 @@
         name: "link-table-body",
         props: {
             data: {},
-            columns: {},
+            bodyColumns: {},
         },
     }
 </script>

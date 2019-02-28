@@ -11,12 +11,12 @@
                          @mouseenter.native="hover = 'head'"
                          @scroll="handleHeadScroll"/>
 
-        <!-- <link-table-body ref="body"
-                          :data="data"
+        <link-table-body ref="body"
+                         :data="data"
 
-                          :columns="columns"
-                          @mouseenter.native="hover = 'body'"
-                          @scroll="handleBodyScroll"/>-->
+                         :bodyColumns="bodyColumns"
+                         @mouseenter.native="hover = 'body'"
+                         @scroll="handleBodyScroll"/>
     </div>
 </template>
 
@@ -84,6 +84,22 @@
                 iterateCol(this.columns)
                 return headColumns;
             },
+            bodyColumns() {
+                const itar = (columns, ret) => {
+                    columns.forEach(item => {
+                        if (!!item.group) {
+                            itar(item.children, ret)
+                        } else {
+                            ret.push(item)
+                        }
+                    })
+                }
+                const cols = []
+                itar(this.columns, cols)
+                // console.log(cols.map(i => i.title))
+                console.log('bodyColumns', cols)
+                return cols
+            },
         },
         mounted() {
             this.isMounted = true
@@ -93,10 +109,10 @@
                 this.columns = columns
             },
             handleBodyScroll(e) {
-                // this.hover === 'body' && this.$refs.head.$refs.scroll.setScroll({x: e.target.scrollLeft})
+                this.hover === 'body' && this.$refs.head.$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
             handleHeadScroll(e) {
-                // this.hover === 'head' && this.$refs.body.$refs.scroll.setScroll({x: e.target.scrollLeft})
+                this.hover === 'head' && this.$refs.body.$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
         },
     }
