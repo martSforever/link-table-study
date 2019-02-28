@@ -7,7 +7,6 @@
             hover:{{hover}}
         </div>-->
         <link-table-head ref="head"
-                         :columns="columns"
                          :head-columns="headColumns"
                          @mouseenter.native="hover = 'head'"
                          @scroll="handleHeadScroll"/>
@@ -73,11 +72,17 @@
                         }
                     })
                 }
-
                 calculateSpan(this.columns)
-
-                console.log(this.columns)
-
+                const headColumns = []
+                for (let i = 0; i < maxLevel; i++) headColumns.push([])
+                const iterateCol = (columns) => {
+                    columns.forEach((col) => {
+                        headColumns[col.level].push(col)
+                        if (col.group) iterateCol(col.children)
+                    })
+                }
+                iterateCol(this.columns)
+                return headColumns;
             },
         },
         mounted() {
