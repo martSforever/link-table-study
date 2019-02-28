@@ -126,13 +126,6 @@
         display: flex;
         flex-direction: column;
 
-        .link-table-head {
-            color: black;
-            background-color: #cacaca;
-            width: 100%;
-            overflow-x: auto;
-        }
-
         .link-table-body {
             flex: 1;
             overflow-y: auto;

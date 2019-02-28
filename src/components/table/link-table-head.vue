@@ -56,6 +56,9 @@
 
 <style lang="scss">
     .link-table-head {
+        background-color: #f5f6fa;
+        width: 100%;
+        overflow-x: hidden;
         td {
             height: 40px;
             box-sizing: border-box;
