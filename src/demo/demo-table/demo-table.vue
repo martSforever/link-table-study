@@ -4,11 +4,11 @@
             <link-button-group>
                 <link-button label="打印columns信息" @click="logColumns"/>
             </link-button-group>
-            <link-input :value="idWidth" @input="val=>idWidth = val-0"/>
+            <link-number :space="10" :value="idWidth" @input="val=>idWidth = val-0"/>
         </div>
         <link-basic-table :data="data" ref="baseTable">
             <link-table-column-group title="用户信息111">
-                <link-base-column title="编号111" field="id"/>
+                <link-base-column title="编号111" field="id" :width="idWidth"/>
                 <link-base-column title="姓名111" field="name"/>
                 <link-base-column title="工号111" field="code"/>
 

@@ -25,6 +25,7 @@
             return {
                 indicator: null,
                 _baseTable: null,
+                startX: null,
             }
         },
         computed: {
@@ -37,7 +38,7 @@
         },
         methods: {
             mousedown(e) {
-                console.log('mousedown')
+                this.startX = e.clientX
                 document.body.addEventListener('mousemove', this.mousemove)
                 document.body.addEventListener('mouseup', this.mouseup)
                 this.$plain.$dom.enableSelectNone();
@@ -45,7 +46,7 @@
                 this.indicator = document.createElement('div')
                 this.indicator.style.width = `${e.target.offsetWidth}px`
                 this.indicator.style.backgroundColor = '#ddd'
-                this.indicator.style.zIndex = 1
+                this.indicator.style.zIndex = 999
                 this.indicator.style.height = `${this.baseTable.$el.offsetHeight}px`
                 this.indicator.style.display = 'inline-block'
                 this.indicator.style.position = 'absolute'
@@ -55,13 +56,17 @@
 
             },
             mousemove(e) {
-                console.log('mousemove')
+                this.indicator.style.left = `${e.clientX}px`
             },
             mouseup(e) {
-                console.log('mouseup')
                 document.body.removeEventListener('mousemove', this.mousemove)
                 document.body.removeEventListener('mouseup', this.mouseup)
                 this.$plain.$dom.disabledSelectNone();
+                document.body.removeChild(this.indicator)
+
+                const durX = e.clientX - this.startX
+                console.log(durX, this.col)
+                this.col.width = this.col.width + durX
             },
         }
     }

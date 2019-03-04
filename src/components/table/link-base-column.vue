@@ -12,6 +12,11 @@
             field: {type: String,},
             width: {type: Number, default: 100},
         },
+        data() {
+            return {
+                lv_width: this.width,
+            }
+        },
         computed: {
             col() {
                 const that = this
@@ -19,7 +24,8 @@
                 const ret = {
                     get title(){return that.title},
                     get field(){return that.field},
-                    get width(){return that.width},
+                    get width(){return that.lv_width},
+                    set width(val){that.lv_width=val},
                 }
                 /*@formatter:on*/
                 return ret
