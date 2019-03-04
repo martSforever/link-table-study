@@ -4,7 +4,7 @@
             <link-button-group>
                 <link-button label="打印columns信息" @click="logColumns"/>
             </link-button-group>
-            <link-number :space="10" :value="idWidth" @input="val=>idWidth = val-0"/>
+            <link-number :step="10" :value="idWidth" @input="val=>idWidth = val-0"/>
         </div>
         <link-basic-table :data="data" ref="baseTable">
             <link-table-column-group title="用户信息111">

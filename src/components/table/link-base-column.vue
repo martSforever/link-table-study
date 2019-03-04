@@ -12,6 +12,11 @@
             field: {type: String,},
             width: {type: Number, default: 100},
         },
+        watch: {
+            width(val) {
+                this.lv_width = val
+            },
+        },
         data() {
             return {
                 lv_width: this.width,

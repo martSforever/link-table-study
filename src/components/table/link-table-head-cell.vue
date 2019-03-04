@@ -35,6 +35,15 @@
                 }
                 return this._baseTable
             },
+            dragColumn() {
+                const itar = (col) => {
+                    if (col.group) {
+                        return itar(col.children[col.children.length - 1])
+                    }
+                    return col
+                }
+                return itar(this.col)
+            },
         },
         methods: {
             mousedown(e) {
@@ -65,8 +74,7 @@
                 document.body.removeChild(this.indicator)
 
                 const durX = e.clientX - this.startX
-                console.log(durX, this.col)
-                this.col.width = this.col.width + durX
+                this.dragColumn.width = this.dragColumn.width + durX
             },
         }
     }
@@ -81,8 +89,8 @@
             .link-table-head-cell-drag {
                 width: 8px;
                 height: 100%;
-                background-color: black;
-                cursor: pointer;
+                background-color: transparent;
+                cursor: w-resize;
             }
         }
     }
