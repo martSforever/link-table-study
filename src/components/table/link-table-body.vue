@@ -2,7 +2,7 @@
     <div class="link-table-body">
         <link-table-body-item :data="data" :bodyColumns="bodyColumns" ref="center" fixed="center"/>
         <link-table-body-item :data="data" :bodyColumns="bodyColumns" ref="left" fixed="left"/>
-        <!--<link-table-body-item :data="data" :bodyColumns="bodyColumns" ref="right"/>-->
+        <link-table-body-item :data="data" :bodyColumns="bodyColumns" ref="right" fixed="right"/>
     </div>
 </template>
 

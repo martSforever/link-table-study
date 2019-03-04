@@ -1,5 +1,5 @@
 <template>
-    <div class="link-table-body-item" :style="styles">
+    <div class="link-table-body-item" :style="styles" :class="[`link-table-body-item-${fixed}`]">
         <link-scroll
                 ref="scroll"
                 :scroll-x="fixed === 'center'"
@@ -46,5 +46,10 @@
         left: 0;
         right: 0;
         background-color: white;
+
+        &.link-table-body-item-right {
+            right: 0;
+            left: initial;
+        }
     }
 </style>
