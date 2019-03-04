@@ -51,6 +51,10 @@
                         path: '/demo-table/demo-table'
                     },
                     {
+                        name: 'BaseTable固定列实现',
+                        path: '/demo-table/demo-table-fixed'
+                    },
+                    {
                         name: 'Scroll滚动条组件示例',
                         path: '/demo-scroll/demo-scroll'
                     },
