@@ -11,6 +11,7 @@
             title: {type: String,},
             field: {type: String,},
             width: {type: Number, default: 100},
+            fixed: {type: String, default: 'center'},
         },
         watch: {
             width(val) {
@@ -30,6 +31,8 @@
                     get title(){return that.title},
                     get field(){return that.field},
                     get width(){return that.lv_width},
+                    get fixed(){return that.fixed},
+
                     set width(val){that.lv_width=val},
                 }
                 /*@formatter:on*/

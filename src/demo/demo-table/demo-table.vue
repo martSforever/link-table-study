@@ -9,8 +9,8 @@
         <link-basic-table :data="data" ref="baseTable">
             <link-table-column-group title="用户信息111">
                 <link-base-column title="编号111" field="id" :width="idWidth"/>
-                <link-base-column title="姓名111" field="name"/>
-                <link-base-column title="工号111" field="code"/>
+                <link-base-column title="姓名111" field="name" fixed="left"/>
+                <link-base-column title="工号111" field="code" fixed="right"/>
 
                 <link-table-column-group title="用户信息222">
                     <link-base-column title="编号222" field="id"/>
