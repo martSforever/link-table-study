@@ -2,7 +2,7 @@
     <div class="demo-table-fixed">
         <link-basic-table :data="data" ref="baseTable">
             <link-base-column title="编号222" field="id" fixed="left"/>
-            <link-base-column title="姓名222" field="name" fixed="right"/>
+            <link-base-column title="姓名222" field="name" fixed="left"/>
             <link-base-column title="工号111" field="code"/>
             <link-base-column title="编号111" field="id"/>
             <link-base-column title="姓名111" field="name"/>

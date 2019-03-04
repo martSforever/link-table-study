@@ -1,8 +1,9 @@
 <template>
-    <div class="link-table-body-item">
+    <div class="link-table-body-item" :style="styles">
         <link-scroll
                 ref="scroll"
-                scroll-x
+                :scroll-x="fixed === 'center'"
+                :hideScrollbar="fixed === 'left'"
                 @scroll="val=>$emit('scroll',val)">
             <table>
                 <tbody>
@@ -25,6 +26,14 @@
         props: {
             data: {},
             bodyColumns: {},
+            fixed: {},
+        },
+        computed: {
+            styles() {
+                if (this.fixed === 'center') return null
+                const width = this.bodyColumns.reduce((ret, item) => ret + (item.fixed === this.fixed ? item.width : 0), 0) + "px"
+                return {width}
+            },
         },
     }
 </script>
