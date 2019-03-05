@@ -7,7 +7,7 @@
             <link-number :step="10" :value="idWidth" @input="val=>idWidth = val-0"/>
         </div>
         <link-basic-table :data="data" ref="baseTable">
-            <link-table-column-group title="用户信息111">
+            <link-table-column-group title="用户信息111" fixed="left">
                 <link-base-column title="编号111" field="id" :width="idWidth"/>
                 <link-base-column title="姓名111" field="name" fixed="left"/>
                 <link-base-column title="工号111" field="code" fixed="right"/>

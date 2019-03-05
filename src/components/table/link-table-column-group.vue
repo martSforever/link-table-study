@@ -14,18 +14,26 @@
         data() {
             return {
                 group: true,
+                lv_fixed: this.fixed,
             }
         },
         methods: {
             getCols() {
                 const children = this.$children.map((item => {
-                    if (!item.group) return item.col
-                    return item.getCols()
+                    const ret = !item.group ? item.col : item.getCols()
+                    ret.fixed = this.fixed
+                    return ret
                 }))
+                const that = this
                 return {
-                    title: this.title,
+                    /*@formatter:off*/
+                    get title(){return that.title},
+                    get fixed(){return that.lv_fixed},
+                    set fixed(val){that.lv_fixed = val},
+
                     group: true,
                     children,
+                    /*@formatter:on*/
                 }
             },
         }
