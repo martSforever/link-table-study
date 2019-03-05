@@ -6,45 +6,31 @@
                 :scroll-y="false"
                 hide-scrollbar
                 @scroll="val=>$emit('scroll',val)">
-            <table cellspacing="0" cellpadding="0" border="0">
-                <thead>
-                <tr v-for="(colRow,colRowIndex) in headColumns" :key="colRowIndex">
-                    <link-table-head-cell
-                            v-for="(colCol,colColIndex) in colRow"
-                            :key="colColIndex"
-                            :col="colCol"/>
-                </tr>
-                </thead>
-            </table>
+            <link-table-head-item :headColumns="headColumns" :body-columns="bodyColumns" fixed="center"/>
         </link-scroll>
+        <link-table-head-item :headColumns="headColumns" :body-columns="bodyColumns" fixed="left"/>
+        <link-table-head-item :headColumns="headColumns" :body-columns="bodyColumns" fixed="right"/>
     </div>
 </template>
 
 <script>
     import LinkTableHeadCell from "./link-table-head-cell";
+    import LinkTableHeadItem from "./link-table-head-item";
 
     export default {
         name: "link-table-head",
-        components: {LinkTableHeadCell},
+        components: {LinkTableHeadItem, LinkTableHeadCell},
         props: {
             headColumns: {},
+            bodyColumns: {},
         },
     }
 </script>
 
 <style lang="scss">
     .link-table-head {
-        background-color: #f5f6fa;
         width: 100%;
         overflow-x: hidden;
-
-        td {
-            height: 40px;
-            box-sizing: border-box;
-
-            &:hover {
-                background-color: #E4E7EF;
-            }
-        }
+        position: relative;
     }
 </style>

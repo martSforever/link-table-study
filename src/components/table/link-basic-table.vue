@@ -8,6 +8,7 @@
         </div>-->
         <link-table-head ref="head"
                          :head-columns="headColumns"
+                         :body-columns="bodyColumns"
                          @mouseenter.native="hover = 'head'"
                          @scroll="handleHeadScroll"/>
 
@@ -106,10 +107,10 @@
         },
         methods: {
             handleBodyScroll(e) {
-                this.hover === 'body' && this.$refs.head.$refs.scroll.setScroll({x: e.target.scrollLeft})
+                // this.hover === 'body' && this.$refs.head.$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
             handleHeadScroll(e) {
-                this.hover === 'head' && this.$refs.body.$refs.scroll.setScroll({x: e.target.scrollLeft})
+                // this.hover === 'head' && this.$refs.body.$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
             p_collect(columns) {
                 this.columns = columns

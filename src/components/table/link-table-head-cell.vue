@@ -7,10 +7,12 @@
             height:'40px',
         }"
              class="link-table-head-cell-content">
-            <div class="link-table-head-cell-title">
-                {{col.title}}
-            </div>
-            <div class="link-table-head-cell-drag" @mousedown="mousedown"></div>
+            <template v-if="col.fixed === fixed">
+                <div class="link-table-head-cell-title">
+                    {{col.title}}
+                </div>
+                <div class="link-table-head-cell-drag" @mousedown="mousedown"></div>
+            </template>
         </div>
     </td>
 </template>
@@ -20,6 +22,7 @@
         name: "link-table-head-cell",
         props: {
             col: {},
+            fixed: {},
         },
         data() {
             return {
