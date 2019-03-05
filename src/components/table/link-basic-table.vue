@@ -105,14 +105,25 @@
             this.isMounted = true
         },
         methods: {
-            p_collect(columns) {
-                this.columns = columns
-            },
             handleBodyScroll(e) {
                 this.hover === 'body' && this.$refs.head.$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
             handleHeadScroll(e) {
                 this.hover === 'head' && this.$refs.body.$refs.scroll.setScroll({x: e.target.scrollLeft})
+            },
+            p_collect(columns) {
+                this.columns = columns
+                this.p_iterate(this.columns, (col) => {
+                    if (col.group)
+                        col.children.sort((a, b) => b.order - a.order)
+                })
+                this.columns.sort((a, b) => b.order - a.order)
+            },
+            p_iterate(columns, fn) {
+                columns.forEach(col => {
+                    fn(col)
+                    if (col.group) this.p_iterate(col.children, fn)
+                })
             },
         },
     }

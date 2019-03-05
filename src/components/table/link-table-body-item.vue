@@ -5,7 +5,7 @@
                 :scroll-x="fixed === 'center'"
                 :hideScrollbar="fixed === 'left'"
                 @scroll="val=>$emit('scroll',val)">
-            <table>
+            <table cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                 <tr v-for="(row,rowIndex) in data" :key="rowIndex">
                     <td v-for="(col,colIndex) in bodyColumns" :key="colIndex">
@@ -52,6 +52,10 @@
         &.link-table-body-item-right {
             right: 0;
             left: initial;
+
+            .pl-scroll-content {
+                float: right;
+            }
         }
     }
 </style>
