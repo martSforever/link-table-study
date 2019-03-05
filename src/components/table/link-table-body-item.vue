@@ -10,7 +10,9 @@
                 <tr v-for="(row,rowIndex) in data" :key="rowIndex">
                     <td v-for="(col,colIndex) in bodyColumns" :key="colIndex">
                         <div :style="{width:`${$plain.$utils.unit(col.width)}`}">
-                            {{row[col.field]}}
+                            <div v-if="col.fixed === fixed">
+                                {{row[col.field]}}
+                            </div>
                         </div>
                     </td>
                 </tr>
