@@ -43,6 +43,7 @@
                     get fixed(){return that.lv_fixed},
                     get order(){return that.lv_order + (that.lv_fixed === 'left'?9999:that.lv_fixed === 'right'?-9999:0)},
                     set width(val){that.lv_width=val},
+                    set fixed(val){that.lv_fixed=val},
                 }
                 /*@formatter:on*/
                 return ret

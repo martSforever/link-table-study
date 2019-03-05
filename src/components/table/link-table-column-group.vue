@@ -9,6 +9,7 @@
         name: "link-table-column-group",
         props: {
             title: {type: String,},
+            fixed: {type: String, default: 'center'}
         },
         data() {
             return {
@@ -23,7 +24,7 @@
                 }))
                 return {
                     title: this.title,
-                    group:true,
+                    group: true,
                     children,
                 }
             },
