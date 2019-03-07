@@ -2,7 +2,7 @@
     <div class="demo-table-fixed">
         <link-basic-table :data="data" ref="baseTable">
 
-            <link-base-column title="工号333" field="code" fixed="right"/>
+            <link-base-column title="工号333" field="code" fixed="right" v-for/>
             <link-base-column title="编号333" field="id" fixed="right"/>
             <link-base-column title="姓名333" field="name" fixed="right"/>
             <link-base-column title="编号222" field="id" fixed="left"/>
@@ -55,6 +55,18 @@
                 ]
             }
         },
+        mounted() {
+            const array = [
+                {label: 1, order: 0},
+                {label: 2, order: 0},
+                {label: 3, order: 1},
+                {label: 4, order: 0},
+                {label: 5, order: 2},
+                {label: 6, order: 0},
+                {label: 7, order: 0},
+            ]
+            // console.log(array.sort((a, b) => a.order - b.order))
+        }
     }
 </script>
 
