@@ -9,7 +9,7 @@
                 <tbody>
                 <tr v-for="(row,rowIndex) in data" :key="rowIndex">
                     <td v-for="(col,colIndex) in bodyColumns" :key="colIndex">
-                        <div :style="{width:`${$plain.$utils.unit(col.width)}`}"
+                        <div :style="{width:`${$plain.$utils.unit(col.realWidth)}`}"
                         class="link-table-cell">
                             <div v-if="col.fixed === fixed">
                                 {{row[col.field]}}

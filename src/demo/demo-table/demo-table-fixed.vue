@@ -15,9 +15,9 @@
             <link-base-column title="姓名999" field="name" :order="1"/>-->
             <link-base-column title="工号*111" field="code"/>
             <link-base-column title="编号*222" field="id"/>
-            <link-base-column title="姓名*333" field="name"/>
-            <link-base-column title="工号*444" field="code"/>
+            <link-base-column title="工号*444" field="code" :fit="1"/>
             <link-base-column title="简介" field="desc"/>
+            <link-base-column title="姓名*333" field="name" :fit="1"/>
         </link-basic-table>
     </div>
 </template>

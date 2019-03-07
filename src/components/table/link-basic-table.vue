@@ -37,6 +37,7 @@
                 columns: [],
                 hover: null,
                 isMounted: false,
+                lv_tableWidth: null,
             }
         },
         computed: {
@@ -86,6 +87,8 @@
                 return headColumns;
             },
             bodyColumns() {
+                if (!this.isMounted) return []
+                if (!this.lv_tableWidth) return []
                 const itar = (columns, ret) => {
                     columns.forEach(item => {
                         if (!!item.group) {
@@ -97,6 +100,25 @@
                 }
                 const cols = []
                 itar(this.columns, cols)
+
+                let totalColumnWidth = 0
+                let totalColumnFit = 0
+                cols.forEach(item => {
+                    totalColumnWidth += item.width
+                    totalColumnFit += item.fit
+                })
+                if (totalColumnWidth < this.lv_tableWidth) {
+                    if (totalColumnFit === 0) {
+                        cols[cols.length - 1].fit = 1
+                        totalColumnFit = 1
+                    }
+                    let externalWidth = this.lv_tableWidth - totalColumnWidth
+                    let chunkWidth = Math.floor(externalWidth / totalColumnFit) - 1
+                    cols.forEach(item => {
+                        console.log(item.width, item.fit, chunkWidth)
+                        item.realWidth = item.width + (item.fit * chunkWidth)
+                    })
+                }
                 // console.log(cols.map(i => i.title))
                 console.log('bodyColumns', cols)
                 return cols
@@ -112,13 +134,17 @@
             handleHeadScroll(e) {
                 this.hover === 'head' && this.$refs.body.$refs.center[0].$refs.scroll.setScroll({x: e.target.scrollLeft})
             },
-            p_collect(columns) {
+            async p_collect(columns) {
                 this.columns = columns
                 this.p_iterate(this.columns, (col) => {
                     if (col.group)
                         col.children.sort((a, b) => b.order - a.order)
                 })
                 this.columns.sort((a, b) => b.order - a.order)
+
+                await this.$nextTick()
+                await this.$nextTick()
+                this.lv_tableWidth = this.$el.offsetWidth
             },
             p_iterate(columns, fn) {
                 columns.forEach(col => {

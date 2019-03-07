@@ -3,7 +3,7 @@
         :colspan="col.colspan"
         :rowspan="col.rowspan">
         <div :style="{
-            width:`${$plain.$utils.unit(col.width)}`,
+            width:`${$plain.$utils.unit(col.realWidth)}`,
             height:'40px',
         }"
              class="link-table-head-cell-content link-table-cell">

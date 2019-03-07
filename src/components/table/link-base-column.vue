@@ -29,6 +29,8 @@
         data() {
             return {
                 lv_width: this.width,
+                lv_fit: this.fit,
+                lv_realWidth: this.width,
                 lv_fixed: this.fixed,
                 lv_order: this.order,
             }
@@ -41,9 +43,13 @@
                     get title(){return that.title},
                     get field(){return that.field},
                     get width(){return that.lv_width},
+                    get fit(){return that.lv_fit},
+                    get realWidth(){return that.lv_realWidth},
                     get fixed(){return that.lv_fixed},
                     get order(){return that.lv_order + (that.lv_fixed === 'left'?9999:that.lv_fixed === 'right'?-9999:0)},
                     set width(val){that.lv_width=val},
+                    set fit(val){that.lv_fit=val},
+                    set realWidth(val){that.lv_realWidth=val},
                     set fixed(val){that.lv_fixed=val},
                 }
                 /*@formatter:on*/
