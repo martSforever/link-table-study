@@ -146,13 +146,5 @@
             width: 100%;
             overflow-x: auto;
         }
-
-        table {
-            width: 100%;
-        }
-
-        .link-table-cell {
-            min-width: 100%;
-        }
     }
 </style>

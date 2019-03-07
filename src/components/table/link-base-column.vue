@@ -13,6 +13,7 @@
             width: {type: Number, default: 100},
             fixed: {type: String, default: 'center'},
             order: {type: Number, default: 0},
+            fit: {type: Number, default: 0},            //列宽权重，根据fit的大小，分摊多余列宽
         },
         watch: {
             width(val) {
