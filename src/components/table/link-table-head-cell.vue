@@ -6,7 +6,7 @@
             width:`${$plain.$utils.unit(col.width)}`,
             height:'40px',
         }"
-             class="link-table-head-cell-content">
+             class="link-table-head-cell-content link-table-cell">
             <template v-if="col.fixed === fixed">
                 <div class="link-table-head-cell-title">
                     {{col.title}}

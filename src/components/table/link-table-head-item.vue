@@ -36,9 +36,15 @@
 </script>
 
 <style lang="scss">
+
     .link-table-head-item {
-        position: absolute;
-        top: 0;
+        &:not(.link-table-head-item-center) {
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    .link-table-head-item {
         overflow: hidden;
         background-color: #f5f6fa;
 

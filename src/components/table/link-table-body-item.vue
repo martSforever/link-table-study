@@ -9,7 +9,8 @@
                 <tbody>
                 <tr v-for="(row,rowIndex) in data" :key="rowIndex">
                     <td v-for="(col,colIndex) in bodyColumns" :key="colIndex">
-                        <div :style="{width:`${$plain.$utils.unit(col.width)}`}">
+                        <div :style="{width:`${$plain.$utils.unit(col.width)}`}"
+                        class="link-table-cell">
                             <div v-if="col.fixed === fixed">
                                 {{row[col.field]}}
                             </div>
@@ -56,6 +57,11 @@
             .pl-scroll-content {
                 float: right;
             }
+        }
+
+        td {
+            height: 36px;
+            border-bottom: solid 0.5px #ddd;
         }
     }
 </style>

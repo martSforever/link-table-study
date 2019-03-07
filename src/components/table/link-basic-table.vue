@@ -137,12 +137,22 @@
         overflow-x: auto;
         display: flex;
         flex-direction: column;
+        border: solid 0.5px #ddd;
+        box-sizing: border-box;
 
         .link-table-body {
             flex: 1;
             overflow-y: auto;
             width: 100%;
             overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .link-table-cell {
+            min-width: 100%;
         }
     }
 </style>
