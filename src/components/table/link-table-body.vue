@@ -1,8 +1,13 @@
 <template>
     <div class="link-table-body">
-        <link-table-body-item :data="data" :bodyColumns="bodyColumns" ref="center" fixed="center"/>
-        <link-table-body-item :data="data" :bodyColumns="bodyColumns" ref="left" fixed="left"/>
-        <link-table-body-item :data="data" :bodyColumns="bodyColumns" ref="right" fixed="right"/>
+        <link-table-body-item
+                v-for="(item,index) in positions"
+                :key="index"
+                :ref="item"
+                :fixed="item"
+                :data="data"
+                :bodyColumns="bodyColumns"
+                @scroll="e=>lv_scroll(e,item)"/>
     </div>
 </template>
 
@@ -15,6 +20,17 @@
         props: {
             data: {},
             bodyColumns: {},
+        },
+        data() {
+            return {
+                positions: ['center', 'left', 'right']
+            }
+        },
+        methods: {
+            lv_scroll(e, pos) {
+                pos === 'center' && this.$emit('scroll', e)
+                this.positions.forEach(position => position !== pos && this.$refs[position][0].$refs.scroll.setScroll({y: e.target.scrollTop}))
+            },
         },
     }
 </script>
