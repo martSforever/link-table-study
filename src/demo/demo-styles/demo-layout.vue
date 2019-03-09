@@ -1,6 +1,5 @@
 <template>
     <div class="demo-layout">
-        <div class="demo-layout-header"></div>
         <div class="demo-layout-content">
             <div class="demo-layout-content-wrapper">
                 <div class="demo-layout-content-left">
@@ -17,7 +16,6 @@
                 </div>
             </div>
         </div>
-        <div class="demo-layout-footer"></div>
     </div>
 </template>
 
@@ -37,25 +35,37 @@
         width: 100%;
         height: 100%;
 
-        display: flex;
-        flex-direction: column;
+        position: relative;
 
         .demo-layout-header {
             height: 9vh;
             border-bottom: solid white 1px;
             box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
         }
 
         .demo-layout-footer {
-            height: 9%;
+            height: 9vh;
+            position: absolute;
             border-top: solid white 1px;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
 
         .demo-layout-content {
-            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
+
+            position: absolute;
+            top: 9vh;
+            bottom: 9vh;
+            left: 0;
+            right: 0;
 
             .demo-layout-content-wrapper {
                 height: 50vh;
