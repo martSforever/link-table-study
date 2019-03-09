@@ -66,6 +66,10 @@
                         name: '布局',
                         path: '/demo-styles/demo-layout'
                     },
+                    {
+                        name: '动画',
+                        path: '/demo-styles/demo-animation'
+                    },
                 ]
             }
         },
