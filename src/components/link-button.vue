@@ -44,7 +44,7 @@
                     color: white;
 
                     &:active {
-                        background-color: rgba($color, 0.5);
+                        background-color: rgba($color, 0.8);
                     }
                 }
             }
@@ -57,7 +57,7 @@
                     color: $color;
 
                     &:active {
-                        background-color: rgba($color, 0.5);
+                        background-color: rgba($color, 0.8);
                     }
                 }
             }
@@ -67,7 +67,7 @@
                 &.link-button-color-#{$key} {
                     color: $color;
                     &:active {
-                        background-color: rgba($color, 0.5);
+                        background-color: rgba($color, 0.8);
                     }
                 }
             }
