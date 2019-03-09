@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import LinkButton from "../components/link-button";
+    import LinkButton from "../../components/link-button";
 
     export default {
         name: "demo-styles",

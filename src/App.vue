@@ -60,7 +60,11 @@
                     },
                     {
                         name: '样式讲解示例',
-                        path: '/demo-styles'
+                        path: '/demo-styles/demo-styles'
+                    },
+                    {
+                        name: '布局',
+                        path: '/demo-styles/demo-layout'
                     },
                 ]
             }
