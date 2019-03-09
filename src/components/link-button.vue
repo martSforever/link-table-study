@@ -12,11 +12,13 @@
         props: {
             label: {type: String, default: '按钮'},     //按钮的文本
             color: {type: String, default: 'primary'},  //按钮默认颜色
+            type: {type: String, default: 'fill'},      //按钮类型
         },
         computed: {
             classes() {
                 return [
-                    `link-button-${this.color}`,
+                    `link-button-color-${this.color}`,
+                    `link-button-type-${this.type}`,
                 ]
             },
         },
@@ -32,19 +34,45 @@
         text-align: center;
         min-width: 68px;
         padding: 0 12px;
-        background-color: grey;
         cursor: pointer;
         user-select: none;
 
-        @each $key, $color in $color-list {
-            &.link-button-#{$key} {
-                background-color: $color;
-                color: white;
+        &.link-button-type-fill {
+            @each $key, $color in $color-list {
+                &.link-button-color-#{$key} {
+                    background-color: $color;
+                    color: white;
 
-                &:active {
-                    background-color: rgba($color, 0.5);
+                    &:active {
+                        background-color: rgba($color, 0.5);
+                    }
                 }
             }
         }
+
+        &.link-button-type-line {
+            @each $key, $color in $color-list {
+                &.link-button-color-#{$key} {
+                    border: solid 1px $color;
+                    color: $color;
+
+                    &:active {
+                        background-color: rgba($color, 0.5);
+                    }
+                }
+            }
+        }
+        &.link-button-type-none {
+            @each $key, $color in $color-list {
+                &.link-button-color-#{$key} {
+                    color: $color;
+                    &:active {
+                        background-color: rgba($color, 0.5);
+                    }
+                }
+            }
+        }
+
+
     }
 </style>

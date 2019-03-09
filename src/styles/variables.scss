@@ -6,6 +6,7 @@ $color-info: #DCDEE2; //提示
 $color-success: #37BF30; //成功
 $color-warn: #BF6F30; //警告
 $color-error: #BF3033; //失败
+$color-crm: blueviolet;
 
 $color-list: (
         primary: $color-primary,
@@ -13,4 +14,5 @@ $color-list: (
         success: $color-success,
         warn: $color-warn,
         error: $color-error,
+        crm:$color-crm,
 )
