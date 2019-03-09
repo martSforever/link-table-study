@@ -58,6 +58,10 @@
                         name: 'Scroll滚动条组件示例',
                         path: '/demo-scroll/demo-scroll'
                     },
+                    {
+                        name: '样式讲解示例',
+                        path: '/demo-styles'
+                    },
                 ]
             }
         },

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './styles/index.scss'
 
 import PlainUI from 'plain-ui/dist/plain-ui.umd'
 import 'plain-ui/dist/plain-ui.css'
