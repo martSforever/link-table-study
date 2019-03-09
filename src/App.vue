@@ -70,6 +70,10 @@
                         name: '动画',
                         path: '/demo-styles/demo-animation'
                     },
+                    {
+                        name: '页签标题组件',
+                        path: '/demo-tab-header/demo-tab-header'
+                    },
                 ]
             }
         },
