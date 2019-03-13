@@ -171,5 +171,14 @@
             width: 100%;
             overflow-x: auto;
         }
+
+        &:hover {
+            .pl-scroll-horizontal-indicator, .pl-scroll-vertical-indicator {
+                opacity: 1;
+            }
+            .pl-scroll-horizontal-indicator{
+                z-index: 2;
+            }
+        }
     }
 </style>
