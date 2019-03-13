@@ -1,6 +1,6 @@
 <template>
     <div class="link-basic-column">
-        <slot></slot>
+        <slot :row="{}" :rowIndex="null" :col="{}" :colIndex="null"></slot>
     </div>
 </template>
 
@@ -47,11 +47,14 @@
                     get realWidth(){return that.lv_realWidth},
                     get fixed(){return that.lv_fixed},
                     get order(){return that.lv_order + (that.lv_fixed === 'left'?9999:that.lv_fixed === 'right'?-9999:0)},
+                    get scopedSlots(){return that.$scopedSlots.default},
+                    get titleScopedSlots(){return that.$scopedSlots.title},
                     set width(val){that.lv_width=val},
                     set fit(val){that.lv_fit=val},
                     set realWidth(val){that.lv_realWidth=val},
                     set fixed(val){that.lv_fixed=val},
                 }
+                console.log(ret,that.$scopedSlots)
                 /*@formatter:on*/
                 return ret
             },

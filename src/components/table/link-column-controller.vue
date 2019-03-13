@@ -23,5 +23,9 @@
 </script>
 
 <style lang="scss">
-
+    .link-column-controller {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
 </style>

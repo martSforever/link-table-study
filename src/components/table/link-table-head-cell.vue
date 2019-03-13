@@ -2,24 +2,26 @@
     <td class="link-table-head-cell"
         :colspan="col.colspan"
         :rowspan="col.rowspan">
-        <div :style="{
-            width:`${$plain.$utils.unit(col.realWidth)}`,
-            height:'40px',
-        }"
-             class="link-table-head-cell-content link-table-cell">
-            <template v-if="col.fixed === fixed">
-                <div class="link-table-head-cell-title">
-                    {{col.title}}
-                </div>
-                <div class="link-table-head-cell-drag" @mousedown="mousedown"></div>
-            </template>
-        </div>
+        <link-table-cell
+                v-if="col.fixed === fixed"
+                :width="col.realWidth"
+                :height="bodyRowHeight"
+                :label="col.title"
+                :col="col"
+                :scoped-slots="col.titleScopedSlots">
+            <div class="link-table-head-cell-drag" @mousedown="mousedown"></div>
+        </link-table-cell>
     </td>
 </template>
 
 <script>
+    import LinkTableCell from "./link-table-cell";
+    import {BasicTableMixin} from "./index";
+
     export default {
         name: "link-table-head-cell",
+        components: {LinkTableCell},
+        mixins: [BasicTableMixin],
         props: {
             col: {},
             fixed: {},
