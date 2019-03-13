@@ -7,6 +7,7 @@
                         v-for="(colCol,colColIndex) in colRow"
                         :key="colColIndex"
                         :col="colCol"
+                        :col-index="colColIndex"
                         :fixed="fixed"/>
             </tr>
             </thead>
@@ -21,7 +22,7 @@
     export default {
         name: "link-table-head-item",
         components: {LinkTableHeadCell},
-        mixins:[BasicTableMixin],
+        mixins: [BasicTableMixin],
         props: {
             fixed: {},
         },
@@ -49,7 +50,6 @@
         background-color: #f5f6fa;
 
         td {
-            height: 40px;
             box-sizing: border-box;
 
             &:hover {

@@ -5,9 +5,10 @@
         <link-table-cell
                 v-if="col.fixed === fixed"
                 :width="col.realWidth"
-                :height="bodyRowHeight"
+                :height="headRowHeight"
                 :label="col.title"
                 :col="col"
+                :data="{col,colIndex}"
                 :scoped-slots="col.titleScopedSlots">
             <div class="link-table-head-cell-drag" @mousedown="mousedown"></div>
         </link-table-cell>
@@ -24,6 +25,7 @@
         mixins: [BasicTableMixin],
         props: {
             col: {},
+            colIndex:{},
             fixed: {},
         },
         data() {
@@ -87,7 +89,7 @@
 
 <style lang="scss">
     .link-table-head-cell {
-        .link-table-head-cell-content {
+        .link-table-cell {
             display: flex;
             justify-content: space-between;
 

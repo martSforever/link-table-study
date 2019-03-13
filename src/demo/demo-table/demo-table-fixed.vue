@@ -19,13 +19,14 @@
             <link-base-column title="简介" field="desc"/>
             <link-base-column title="姓名*333" field="name" :fit="1"/>
             <link-base-column title="姓名333666" field="name">
+                <template slot-scope="{col,colIndex}" slot="title">
+                    hello:<span>{{col.title}}</span>
+                    <link-radio/>
+                </template>
                 <template slot-scope="{row,rowIndex}">
                     hello:<span>{{row.name}}</span>
                 </template>
 
-                <template slot-scope="{col,colIndex}" slot="title">
-                    hello:<span>{{col.title}}</span>
-                </template>
             </link-base-column>
         </link-basic-table>
     </div>

@@ -2,9 +2,8 @@
     <div class="link-table-cell" :style="styles">
         <lv-scope-slot v-if="!!scopedSlots"
                        :scope-slot-func="scopedSlots"
-                       :data="{col}"/>
+                       :data="data"/>
         <span v-else>{{label}}</span>
-        <span>{{!!scopedSlots}}</span>
         <slot></slot>
     </div>
 </template>
@@ -20,7 +19,8 @@
             height: {},
             label: {},
             col: {},
-            scopedSlots: {type: Function}
+            scopedSlots: {type: Function},
+            data: {},
         },
         computed: {
             styles() {

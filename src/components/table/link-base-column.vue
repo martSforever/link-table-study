@@ -54,7 +54,6 @@
                     set realWidth(val){that.lv_realWidth=val},
                     set fixed(val){that.lv_fixed=val},
                 }
-                console.log(ret,that.$scopedSlots)
                 /*@formatter:on*/
                 return ret
             },

@@ -9,12 +9,14 @@
                 <tbody>
                 <tr v-for="(row,rowIndex) in data" :key="rowIndex">
                     <td v-for="(col,colIndex) in bodyColumns" :key="colIndex">
-                        <div :style="{width:`${$plain.$utils.unit(col.realWidth)}`}"
-                             class="link-table-cell">
-                            <div v-if="col.fixed === fixed">
-                                {{row[col.field]}}
-                            </div>
-                        </div>
+                        <link-table-cell
+                                v-if="col.fixed === fixed"
+                                :width="col.realWidth"
+                                :height="bodyRowHeight"
+                                :label="row[col.field]"
+                                :col="col"
+                                :data="{row,rowIndex,col,colIndex}"
+                                :scoped-slots="col.scopedSlots"/>
                     </td>
                 </tr>
                 </tbody>
@@ -25,9 +27,11 @@
 
 <script>
     import {BasicTableMixin} from "./index";
+    import LinkTableCell from "./link-table-cell";
 
     export default {
         name: "link-table-body-item",
+        components: {LinkTableCell},
         mixins: [BasicTableMixin],
         props: {
             fixed: {},
@@ -61,7 +65,6 @@
         }
 
         td {
-            height: 36px;
             border-bottom: solid 0.5px #ddd;
         }
     }
