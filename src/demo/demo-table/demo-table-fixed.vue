@@ -13,12 +13,14 @@
             <link-base-column title="工号777" field="code" :order="3"/>
             <link-base-column title="编号888" field="id" :order="2"/>
             <link-base-column title="姓名999" field="name" :order="1"/>-->
+            <link-base-column title="姓名333" field="name" fixed="right"/>
+            <link-base-column title="编号222" field="id" fixed="left"/>
             <link-base-column title="工号*111" field="code"/>
             <link-base-column title="编号*222" field="id"/>
             <link-base-column title="工号*444" field="code" :fit="1"/>
             <link-base-column title="简介" field="desc"/>
             <link-base-column title="姓名*333" field="name" :fit="1"/>
-            <link-base-column title="姓名333666" field="name">
+            <link-base-column title="姓名333666" field="name" :width="200">
                 <template slot-scope="{col,colIndex}" slot="title">
                     hello:<span>{{col.title}}</span>
                     <link-radio/>

@@ -7,7 +7,7 @@
                 @scroll="val=>$emit('scroll',val)">
             <table cellspacing="0" cellpadding="0" border="0">
                 <tbody>
-                <tr v-for="(row,rowIndex) in data" :key="rowIndex">
+                <tr v-for="(row,rowIndex) in data" :key="rowIndex" class="link-table-row">
                     <td v-for="(col,colIndex) in bodyColumns" :key="colIndex">
                         <link-table-cell
                                 v-if="col.fixed === fixed"
@@ -66,6 +66,12 @@
 
         td {
             border-bottom: solid 0.5px #ddd;
+        }
+
+        .link-table-row {
+            &:hover {
+                background-color: $color-primary-light;
+            }
         }
     }
 </style>
