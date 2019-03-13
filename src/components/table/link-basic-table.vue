@@ -1,5 +1,5 @@
 <template>
-    <div class="link-basic-table">
+    <div class="link-basic-table" :class="classes">
         <link-column-controller @collect="p_collect">
             <slot></slot>
         </link-column-controller>
@@ -37,9 +37,17 @@
                 hover: null,
                 isMounted: false,
                 lv_tableWidth: null,
+                p_scrollLeft: true,            // 是否已经滚动到最左边
+                p_scrollRight: true,           // 是否已经滚动到最右边
             }
         },
         computed: {
+            classes() {
+                return {
+                    'link-basic-table-scroll-left': !this.p_scrollLeft,
+                    'link-basic-table-scroll-right': !this.p_scrollRight,
+                }
+            },
             p_headColumns() {
                 if (!this.isMounted) return []
                 /*计算最大层数*/
@@ -125,6 +133,8 @@
         },
         mounted() {
             this.isMounted = true
+            this.$on('scrollLeft', val => this.p_scrollLeft = val)
+            this.$on('scrollRight', val => this.p_scrollRight = val)
         },
         methods: {
             handleBodyScroll(e) {
@@ -176,9 +186,23 @@
             .pl-scroll-horizontal-indicator, .pl-scroll-vertical-indicator {
                 opacity: 1;
             }
-            .pl-scroll-horizontal-indicator{
+
+            .pl-scroll-horizontal-indicator {
                 z-index: 2;
             }
         }
+
+        &.link-basic-table-scroll-right {
+            .link-table-body-item-right, .link-table-head-item-right {
+                box-shadow: 0 0 10px rgba(black, 0.12);
+            }
+        }
+
+        &.link-basic-table-scroll-left {
+            .link-table-body-item-left, .link-table-head-item-left {
+                box-shadow: 0 0 10px rgba(black, 0.12);
+            }
+        }
+
     }
 </style>
