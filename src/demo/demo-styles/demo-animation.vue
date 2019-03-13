@@ -21,24 +21,30 @@
             </div>
         </div>
         <div class="demo-animation-type-wrapper">
-            <div class="demo-animation-login"
-                 :class="[`demo-animation-login-${type === TYPE.PASSWORD?'show':'hide'}`]">
-                <div>
-                    <span>用户名：</span>
-                    <link-input/>
+            <!--<transition name="demo-animation-rotate">-->
+            <transition name="demo-animation-rotate">
+                <div class="demo-animation-login demo-animation-item" key="login" v-if="type === TYPE.PASSWORD">
+                    <div>
+                        <span>用户名：</span>
+                        <link-input/>
+                    </div>
+                    <div>
+                        <span>密码：</span>
+                        <link-input/>
+                    </div>
+                    <div>
+                        <link-button label="登录" long/>
+                    </div>
                 </div>
-                <div>
-                    <span>密码：</span>
-                    <link-input/>
+                <div class="demo-animation-code demo-animation-item" key="code" v-if="type === TYPE.CODE">
+                    <img src="http://116.228.77.183:25080/outer/static/img/link-crm-prod.befc1b4.png" alt="">
                 </div>
-                <div>
-                    <link-button label="登录" long/>
+                <div class="demo-animation-third demo-animation-item" key="third" v-if="type === TYPE.THIRD">
+                    <div>
+                        <link-button label="QQ登录"/>
+                    </div>
                 </div>
-            </div>
-            <div class="demo-animation-code"
-                 :class="[`demo-animation-login-${type === TYPE.CODE?'show':'hide'}`]">
-                <img src="http://116.228.77.183:25080/outer/static/img/link-crm-prod.befc1b4.png" alt="">
-            </div>
+            </transition>
         </div>
     </div>
 </template>
@@ -87,22 +93,12 @@
         .demo-animation-type-wrapper {
             position: relative;
 
-            & > div {
+            .demo-animation-item {
                 position: absolute;
-                top: 0;
                 left: 0;
+                top: 0;
                 transition: all 0.15s linear;
                 background-color: white;
-            }
-
-            .demo-animation-login-show {
-                transform: rotateY(0) perspective(0px);
-                z-index: 1;
-            }
-
-            .demo-animation-login-hide {
-                transform: rotateY(90deg) perspective(600px);
-                z-index: 0;
             }
 
             .demo-animation-code {
@@ -114,6 +110,14 @@
                     width: 100%;
                     height: auto;
                 }
+            }
+
+            .demo-animation-third {
+                width: 300px;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center
             }
 
             .demo-animation-login {
@@ -141,4 +145,45 @@
         }
 
     }
+
+    .demo-animation-rotate-enter {
+        transform: perspective(600px) rotateY(-180deg);
+        opacity: 0;
+    }
+
+    .demo-animation-rotate-enter-active {
+
+    }
+
+    .demo-animation-rotate-enter-to {
+        transform: perspective(600px) rotateY(0deg);
+        opacity: 1;
+    }
+
+    .demo-animation-rotate-leave {
+        transform: perspective(600px) rotateY(0deg);
+        opacity: 1;
+    }
+
+    .demo-animation-rotate-leave-active {
+
+    }
+
+    .demo-animation-rotate-leave-to {
+        transform: perspective(600px) rotateY(180deg);
+        opacity: 0;
+    }
+
+    .slide-fade-enter-active {
+        transition: all 3s ease;
+    }
+
+    .slide-fade-leave-active {
+        transition: all 3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+
+    .slide-fade-enter, .slide-fade-leave-to {
+        opacity: 0;
+    }
+
 </style>
