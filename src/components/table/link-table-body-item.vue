@@ -10,7 +10,7 @@
                 <tr v-for="(row,rowIndex) in data" :key="rowIndex">
                     <td v-for="(col,colIndex) in bodyColumns" :key="colIndex">
                         <div :style="{width:`${$plain.$utils.unit(col.realWidth)}`}"
-                        class="link-table-cell">
+                             class="link-table-cell">
                             <div v-if="col.fixed === fixed">
                                 {{row[col.field]}}
                             </div>
@@ -24,11 +24,12 @@
 </template>
 
 <script>
+    import {BasicTableMixin} from "./index";
+
     export default {
         name: "link-table-body-item",
+        mixins: [BasicTableMixin],
         props: {
-            data: {},
-            bodyColumns: {},
             fixed: {},
         },
         computed: {

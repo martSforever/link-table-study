@@ -16,13 +16,13 @@
 
 <script>
     import LinkTableHeadCell from "./link-table-head-cell";
+    import {BasicTableMixin} from "./index";
 
     export default {
         name: "link-table-head-item",
         components: {LinkTableHeadCell},
+        mixins:[BasicTableMixin],
         props: {
-            headColumns: {},
-            bodyColumns: {},
             fixed: {},
         },
         computed: {

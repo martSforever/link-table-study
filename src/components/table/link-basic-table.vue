@@ -7,15 +7,15 @@
             hover:{{hover}}
         </div>-->
         <link-table-head ref="head"
-                         :head-columns="headColumns"
-                         :body-columns="bodyColumns"
+                         :head-columns="p_headColumns"
+                         :body-columns="p_bodyColumns"
                          @mouseenter.native="hover = 'head'"
                          @scroll="handleHeadScroll"/>
 
         <link-table-body ref="body"
                          :data="data"
 
-                         :bodyColumns="bodyColumns"
+                         :bodyColumns="p_bodyColumns"
                          @mouseenter.native="hover = 'body'"
                          @scroll="handleBodyScroll"/>
     </div>
@@ -25,13 +25,12 @@
     import LinkColumnController from "./link-column-controller";
     import LinkTableHead from "./link-table-head";
     import LinkTableBody from "./link-table-body";
+    import {BasicTableMixin} from "./index";
 
     export default {
         name: "link-basic-table",
         components: {LinkTableBody, LinkTableHead, LinkColumnController},
-        props: {
-            data: {type: Array, default: () => []},
-        },
+        mixins: [BasicTableMixin],
         data() {
             return {
                 columns: [],
@@ -41,7 +40,7 @@
             }
         },
         computed: {
-            headColumns() {
+            p_headColumns() {
                 if (!this.isMounted) return []
                 /*计算最大层数*/
                 let maxLevel = 1;
@@ -86,7 +85,7 @@
                 iterateCol(this.columns)
                 return headColumns;
             },
-            bodyColumns() {
+            p_bodyColumns() {
                 if (!this.isMounted) return []
                 if (!this.lv_tableWidth) return []
                 const itar = (columns, ret) => {
@@ -115,12 +114,12 @@
                     let externalWidth = this.lv_tableWidth - totalColumnWidth
                     let chunkWidth = Math.floor(externalWidth / totalColumnFit) - 1
                     cols.forEach(item => {
-                        console.log(item.width, item.fit, chunkWidth)
+                        // console.log(item.width, item.fit, chunkWidth)
                         item.realWidth = item.width + (item.fit * chunkWidth)
                     })
                 }
                 // console.log(cols.map(i => i.title))
-                console.log('bodyColumns', cols)
+                // console.log('bodyColumns', cols)
                 return cols
             },
         },

@@ -13,14 +13,12 @@
 
 <script>
     import LinkTableBodyItem from "./link-table-body-item";
+    import {BasicTableMixin} from "./index";
 
     export default {
         name: "link-table-body",
         components: {LinkTableBodyItem},
-        props: {
-            data: {},
-            bodyColumns: {},
-        },
+        mixins:[BasicTableMixin],
         data() {
             return {
                 positions: ['center', 'left', 'right']
